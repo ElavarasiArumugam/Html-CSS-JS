@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 320px;
+    }
+
+    fieldset {
+      border: none;
+    }
+
+    legend {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .color {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <legend>Feedback Form</legend>
+
+      <label for="name">Name:</label>
+      <input class="color" type="text" name="name" id="name" placeholder="Your name" required>
+
+      <label for="email">Email:</label>
+      <input class="color" type="email" name="email" id="email" placeholder="you@example.com" required>
+
+      <label for="rating">Rating:</label>
+      <input class="color" type="range" id="rating" name="rating" min="1" max="6">
+    </fieldset>
+  </form>
+</body>
+</html>

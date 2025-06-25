@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas Graphics</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      border: 2px solid #333;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Canvas Graphics Example</h2>
+  <canvas id="myCanvas" width="400" height="300"></canvas>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Draw rectangle
+    ctx.fillStyle = "#3498db";
+    ctx.fillRect(50, 50, 150, 100);
+
+    // Draw circle
+    ctx.beginPath();
+    ctx.arc(275, 100, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = "#e74c3c";
+    ctx.fill();
+
+    // Optional: Add text
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#2c3e50";
+    ctx.fillText("Blue Rectangle & Red Circle", 100, 200);
+  </script>
+</body>
+</html>

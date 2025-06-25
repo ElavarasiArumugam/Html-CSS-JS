@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Javascript</title>
+  <style>
+    body {
+      background-color:pink;
+      font-color:red;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 10px;
+    }
+    h2{
+      margin-top: 30px;
+      font-size:30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎂 Live Birthday Countdown 🎂</h1>
+  <form onsubmit="startCountdown(event)">
+    <label for="date">Enter your birthday:</label><br>
+    <input type="date" id="date" required><br>
+    <input type="submit" value="Start Countdown">
+  </form>
+
+  <h2 id="countdown"></h2>
+
+  <script>
+    let countdownInterval;
+
+    function startCountdown(event) {
+      event.preventDefault();
+
+      const inputDate = new Date(document.getElementById("date").value);
+      const today = new Date();
+      let birthday = new Date(today.getFullYear(), inputDate.getMonth(), inputDate.getDate());
+      if (
+  birthday.getDate() === today.getDate() &&
+  birthday.getMonth() === today.getMonth()
+)
+{
+    document.getElementById("countdown").innerHTML = "🎉 Happy Birthday! 🎉";
+    return;
+  }
+      // If birthday already passed this year
+      if (birthday < today) {
+        document.getElementById("countdown").innerHTML = "❌ Invalid input. Please enter a future date.";
+return;
+      }
+
+      clearInterval(countdownInterval); // Clear any previous countdown
+
+      countdownInterval = setInterval(() => {
+        const now = new Date().getTime();
+        const timeLeft = birthday.getTime() - now;
+
+        if (timeLeft <= 0) {
+          document.getElementById("countdown").innerHTML = "🎉 Happy Birthday! 🎉";
+          clearInterval(countdownInterval);
+          return;
+        }
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+          `${days}d ${hours}h ${minutes}m ${seconds}s left until your birthday!`;
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
